@@ -1,0 +1,99 @@
+<div class="Timeline__card">
+  <div class="Card__white" #card>
+    <header [ngClass]="data.agendamento_situacao === 'F' && 'error'">
+      {{ data.agendamento_data | date: "dd/MM/yyyy" }} -
+      {{ data.agendamento_situacao | status }}
+      <h3 *ngIf="data.agendamento_situacao !== 'F'">
+        Prontuário {{ data.guia_id }}
+      </h3>
+    </header>
+
+    <div class="Content">
+      <span>
+        <img src="../../assets/vectors/Icon metro-user.svg" alt="User" />
+        {{ data.prestador_nome }} {{ data.prestador_conselho }}-{{
+          data.prestador_estado
+        }}
+        {{ data.prestador_codigo_conselho }}
+      </span>
+
+      <span>
+        <img
+          src="../../assets/vectors/Icon open-clipboard.svg"
+          alt="Clipboard"
+        />
+        {{ data.especialidade_nome }}
+      </span>
+
+      <span>
+        <img
+          src="../../assets/vectors/Icon open-map-marker.svg"
+          alt="Location"
+        />
+        {{ data.ambulatorio_nome }}
+      </span>
+    </div>
+
+    <footer *ngIf="data.agendamento_situacao !== 'F'">
+      <div class="Procedimentos">
+        <h3>Procedimentos</h3>
+        <section class="content">
+          <app-tooltip
+            *ngFor="let procedimento of data.procedimentos"
+            [title]="procedimento.cnomepmed"
+          >
+            <span class="Procedimento">{{ procedimento.ccodipmed }}</span>
+          </app-tooltip>
+        </section>
+      </div>
+      <div class="Documentos">
+        <h3>Documentos gerados</h3>
+        <section class="content">
+          <app-tooltip [title]="'Receita médica'">
+            <button class="Icon__button">
+              <img
+                src="../../assets/vectors/Icon awesome-clipboard-list.svg"
+                alt="List"
+              />
+            </button>
+          </app-tooltip>
+
+          <app-tooltip [title]="'Exames'">
+            <button class="Icon__button">
+              <img
+                src="../../assets/vectors/Icon awesome-band-aid.svg"
+                alt="Band-aid"
+              />
+            </button>
+          </app-tooltip>
+
+          <app-tooltip [title]="'Encaminhamentos'">
+            <button class="Icon__button">
+              <img
+                src="../../assets/vectors/Icon awesome-paper-plane.svg"
+                alt="Plane"
+              />
+            </button>
+          </app-tooltip>
+
+          <app-tooltip [title]="'Atestado'">
+            <button class="Icon__button">
+              <img
+                src="../../assets/vectors/Icon awesome-briefcase-medical.svg"
+                alt="Medical"
+              />
+            </button>
+          </app-tooltip>
+        </section>
+      </div>
+    </footer>
+  </div>
+  <app-timeline-expanded-card
+    *ngIf="data.agendamento_situacao === 'M'"
+    [father]="card"
+    [cid]="null"
+    [observacao]="data.observacao"
+    [evolucao]="data.evolucao"
+    [anamnese]="data.anamnese"
+  ></app-timeline-expanded-card>
+</div>

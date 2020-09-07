@@ -1,0 +1,51 @@
+.Expanded__Card {
+  position: absolute;
+  top: 0;
+  left: 16px;
+  width: calc(100% + 16px);
+  height: calc(100% - 8px);
+  padding: 16px 32px;
+  background-image: linear-gradient(to bottom right, #004e66, #006f88, #009ccc);
+  border-radius: 12px;
+  margin-top: 8px;
+  z-index: 1;
+  cursor: pointer;
+  overflow: hidden;
+
+  &.implode {
+    animation: Implode 0.3s ease;
+  }
+
+  &.opened {
+    height: fit-content;
+    max-height: 600px;
+    //overflow-y: scroll;
+    scrollbar-width: 0px;
+    left: calc(100% - 16px);
+    z-index: 35;
+    animation: Expand 0.3s ease;
+  }
+}
+
+@keyframes Expand {
+  from {
+    height: calc(100% - 8px);
+    left: 16px;
+  }
+
+  to {
+    height: 600px;
+    left: calc(100% - 16px);
+  }
+}
+
+@keyframes Implode {
+  from {
+    height: 600px;
+    left: calc(100% - 16px);
+  }
+  to {
+    height: calc(100% - 8px);
+    left: 16px;
+  }
+}

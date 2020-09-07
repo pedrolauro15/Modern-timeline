@@ -1,0 +1,21 @@
+<div class="Timeline__item">
+  <section class="Item__indicator">
+    <div class="Container">
+      <span [ngClass]="data.agendamento_situacao === 'F' && 'Icon__error'">
+        <img
+          *ngIf="data.agendamento_situacao !== 'F'"
+          src="../../assets/vectors/Icon open-document.svg"
+          alt="Item"
+        />
+        <img
+          *ngIf="data.agendamento_situacao === 'F'"
+          src="../../assets/vectors/calendar-times.svg"
+          alt="Item"
+        />
+      </span>
+    </div>
+  </section>
+  <section class="Item__content">
+    <app-timeline-card [data]="data"></app-timeline-card>
+  </section>
+</div>

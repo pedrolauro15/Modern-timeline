@@ -1,0 +1,59 @@
+div.Timeline__item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 16px;
+  margin-bottom: 16px;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: calc(100% - 25px);
+    right: calc(100% - 25px);
+    transform: translateX(50%) translateY(100%);
+    width: 5px;
+    height: 100%;
+    background-color: #e5e5e5;
+    z-index: 1;
+  }
+
+  > section.Item__indicator {
+    position: relative;
+    > .Container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba($color: #000, $alpha: 0.2);
+      position: relative;
+      z-index: 8;
+
+      > span {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-image: linear-gradient(to right, #004e66, #009ccc);
+        position: relative;
+        z-index: 10;
+
+        > img {
+          height: 18px;
+        }
+      }
+    }
+  }
+}
+
+.Icon__error {
+  background-image: linear-gradient(
+    to right,
+    #800000,
+    #f10000,
+    #ff0000
+  ) !important;
+}

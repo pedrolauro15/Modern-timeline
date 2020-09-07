@@ -1,0 +1,11 @@
+<div class="Informartion">
+  <header>
+    <span [ngClass]="!content && 'no-content'">{{ title }}</span>
+    <app-tooltip [title]="'Copiar'">
+      <button (click)="copyToClipboard()">
+        <img src="../../../assets/vectors/copy.svg" alt="Copy" />
+      </button>
+    </app-tooltip>
+  </header>
+  <span [ngClass]="!content && 'empty'">{{ content | semInformacao }}</span>
+</div>
